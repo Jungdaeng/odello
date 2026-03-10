@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>오델로 웹 게임</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>오델로(리버시)</h1>
+
+      <section id="setup-panel" class="panel">
+        <h2>게임 설정</h2>
+        <div class="row">
+          <label for="board-size">보드 크기</label>
+          <select id="board-size">
+            <option value="6">6 x 6</option>
+            <option value="8" selected>8 x 8</option>
+            <option value="10">10 x 10</option>
+          </select>
+        </div>
+        <div class="row">
+          <label for="difficulty">AI 난이도</label>
+          <select id="difficulty">
+            <option value="easy">하</option>
+            <option value="medium" selected>중</option>
+            <option value="hard">상 (Minimax + αβ)</option>
+          </select>
+        </div>
+        <button id="start-btn">Start</button>
+      </section>
+
+      <section id="game-panel" class="panel hidden">
+        <div class="status-grid">
+          <p><strong>현재 턴:</strong> <span id="turn-label">-</span></p>
+          <p><strong>흑 점수:</strong> <span id="black-score">0</span></p>
+          <p><strong>백 점수:</strong> <span id="white-score">0</span></p>
+        </div>
+        <div class="actions">
+          <button id="forfeit-btn" class="danger">포기</button>
+          <button id="restart-btn" class="secondary">재시작</button>
+        </div>
+        <p id="notice" class="notice"></p>
+        <div id="board" class="board"></div>
+      </section>
+
+      <section id="result-panel" class="panel hidden">
+        <h2>게임 결과</h2>
+        <p id="result-text"></p>
+      </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+  </body>
+</html>
